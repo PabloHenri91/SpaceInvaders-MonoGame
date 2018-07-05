@@ -22,6 +22,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\Alien.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\Ship.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\Shot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\GameColors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\GameWorld.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpaceInvaders\GameFonts.cs" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
