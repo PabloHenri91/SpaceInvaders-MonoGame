@@ -81,8 +81,7 @@ namespace Hydra.SpaceInvaders
 
         internal void update()
         {
-            position.X += speedX;
-            position.Y += speedY * 10;
+            position += new Vector2(speedX, speedY * 10);
         }
 
         void explosionEffect()
