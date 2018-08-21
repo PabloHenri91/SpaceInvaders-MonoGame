@@ -2,7 +2,7 @@
 
 namespace Hydra
 {
-    public class GameWorld : SKNode
+    class GameWorld : SKNode
     {
     }
 }
