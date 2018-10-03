@@ -86,9 +86,8 @@ namespace Hydra.SpaceInvaders
 
         void explosionEffect()
         {
-            SKEmitterNode emitterNode = new SKEmitterNode();
+            SKEmitterNode emitterNode = new SKEmitterNode(100);
 
-            emitterNode.numParticlesToEmit = 100;
             emitterNode.particleBirthRate = 12000;
             emitterNode.scale = new Vector2(0.5f, 0.5f);
             emitterNode.particleLifetime = 1;
