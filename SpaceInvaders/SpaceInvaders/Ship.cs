@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Dragon;
 using Microsoft.Xna.Framework;
 
-namespace Hydra.SpaceInvaders
+namespace SpaceInvaders
 {
-    class Ship : SKSpriteNode
+    class Ship : DSpriteNode
     {
         internal bool canShoot = true;
         double lastShot;
@@ -20,27 +20,27 @@ namespace Hydra.SpaceInvaders
         {
             if (canShoot)
             {
-                if (SKScene.currentTime - lastShot >= 0.2f)
+                if (DGame.current.currentTime - lastShot >= 0.2f)
                 {
-                    lastShot = SKScene.currentTime;
+                    lastShot = DGame.current.currentTime;
                     parent.addChild(new Shot(this));
                 }
             }
         }
 
-        internal void touchMoved(Touch touch)
+        internal void touchMoved(DTouch touch)
         {
             var x = touch.locationIn(parent).X;
 
-            if (x > SKScene.defaultSize.X / 2.0f)
+            if (x > DScene.current.size.X / 2.0f)
             {
-                x = SKScene.defaultSize.X / 2.0f;
+                x = DScene.current.size.X / 2.0f;
             }
             else
             {
-                if (x < -SKScene.defaultSize.X / 2.0f)
+                if (x < -DScene.current.size.X / 2.0f)
                 {
-                    x = -SKScene.defaultSize.X / 2.0f;
+                    x = -DScene.current.size.X / 2.0f;
                 }
             }
 

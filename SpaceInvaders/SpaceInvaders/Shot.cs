@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Dragon;
 using Microsoft.Xna.Framework;
 
-namespace Hydra.SpaceInvaders
+namespace SpaceInvaders
 {
-    class Shot : SKSpriteNode
+    class Shot : DSpriteNode
     {
         internal static List<Shot> list = new List<Shot>();
 
@@ -21,7 +21,7 @@ namespace Hydra.SpaceInvaders
             this.shooter = shooter;
             position = shooter.position;
             startingPosition = position;
-            zRotation = shooter.zRotation;
+            rotation = shooter.rotation;
             list.Add(this);
             shooter.canShoot = false;
         }
@@ -41,7 +41,7 @@ namespace Hydra.SpaceInvaders
             }
             else
             {
-                position = position - new Vector2((float)(-Math.Sin(zRotation) * speed), (float)(Math.Cos(zRotation) * speed));
+                position = position - new Vector2((float)(-Math.Sin(rotation) * speed), (float)(Math.Cos(rotation) * speed));
             }
         }
 

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Dragon;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Hydra.SpaceInvaders
+namespace SpaceInvaders
 {
-    class Alien : SKSpriteNode
+    class Alien : DSpriteNode
     {
         internal static List<Alien> list = new List<Alien>();
 
@@ -51,7 +51,7 @@ namespace Hydra.SpaceInvaders
                 {
                     if (speedX > 0)
                     {
-                        if (alien.position.X > SKScene.defaultSize.X / 2)
+                        if (alien.position.X > DScene.current.size.X / 2)
                         {
                             speedX *= -1.1f;
                             speedY = 1;
@@ -60,7 +60,7 @@ namespace Hydra.SpaceInvaders
                     }
                     else
                     {
-                        if (alien.position.X < -SKScene.defaultSize.X / 2)
+                        if (alien.position.X < -DScene.current.size.X / 2)
                         {
                             speedX *= -1.1f;
                             speedY = 1;
@@ -86,7 +86,7 @@ namespace Hydra.SpaceInvaders
 
         void explosionEffect()
         {
-            SKEmitterNode emitterNode = new SKEmitterNode(100);
+            DEmitterNode emitterNode = new DEmitterNode(100);
 
             emitterNode.particleBirthRate = 12000;
             emitterNode.scale = new Vector2(0.5f, 0.5f);

@@ -2,56 +2,64 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Hydra.SpaceInvaders;
-
 using Microsoft.Xna.Framework;
+using Dragon;
 
-namespace Hydra.Scenes
+namespace SpaceInvaders.Scenes
 {
-    class BattleScene : SKScene
+    class BattleScene : DScene
     {
         Ship ship;
 
-		internal override void load()
-		{
-		    base.load();
+        public BattleScene()
+        {
+            size = new Vector2(568, 320);
+        }
 
-		    camera = new CameraNode();
-		    gameWorld.addChild(camera);
+        internal override void load()
+        {
+            base.load();
 
-		    ship = new Ship
-		    {
-		        position = new Vector2(0, 148)
-		    };
-		    gameWorld.addChild(ship);
+            DNode gameWorld = new DNode();
+            gameWorld.position = new Vector2(size.X / 2.0f, size.Y / 2.0f);
+            addChild(gameWorld);
 
-		    for (int x = -4; x <= 4; x++)
-		    {
-		        for (int y = 0; y <= 5; y++)
-		        {
-		            Alien alien = new Alien
-		            {
-		                position = new Vector2(43 * x, 29 * -y)
-		            };
-		            gameWorld.addChild(alien);
-		        }
-		    }
-		}
+            cameraNode = new DCameraNode();
+            gameWorld.addChild(cameraNode);
 
-		internal override void update()
-		{
-		    base.update();
-		    camera.position = Vector2.Lerp(camera.position, Vector2.Zero, 0.1f);
+            ship = new Ship
+            {
+                position = new Vector2(0, 148)
+            };
+            gameWorld.addChild(ship);
 
-		    ship.update();
-		    Shot.updateAll();
-		    Alien.updateAll();
-		}
+            for (int x = -4; x <= 4; x++)
+            {
+                for (int y = 0; y <= 5; y++)
+                {
+                    Alien alien = new Alien
+                    {
+                        position = new Vector2(43 * x, 29 * -y)
+                    };
+                    gameWorld.addChild(alien);
+                }
+            }
+        }
 
-		internal override void touchMoved(Touch touch)
-		{
-		    base.touchMoved(touch);
-		    ship.touchMoved(touch);
-		}
-	}
+        internal override void update()
+        {
+            base.update();
+            cameraNode.position = Vector2.Lerp(cameraNode.position, Vector2.Zero, 0.1f);
+
+            ship.update();
+            Shot.updateAll();
+            Alien.updateAll();
+        }
+
+        internal override void touchMoved(DTouch touch)
+        {
+            base.touchMoved(touch);
+            ship.touchMoved(touch);
+        }
+    }
 }

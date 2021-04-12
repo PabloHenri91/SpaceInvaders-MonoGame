@@ -1,41 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Dragon;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpaceInvaders.Scenes;
 
-
-
-namespace Hydra.Scenes
+namespace Dragon
 {
-    class GameScene : SKScene
+    class GameScene : DScene
     {
-        ServerManager serverManager = new ServerManager("SpaceInvaders");
-
         public GameScene()
         {
-            defaultSize = new Vector2(568, 320);
+            size = new Vector2(568, 320);
         }
 
         internal override void load()
         {
             base.load();
-            Control pressanykey = new Control("pressanykey", 184, 123);
+            DControl pressanykey = new DControl("pressanykey", 184, 123);
             pressanykey.setAlignment(HorizontalAlignment.center, VerticalAlignment.center);
             addChild(pressanykey);
         }
 
-        internal override void update()
-        {
-            base.update();
-        }
-
-        internal override void touchUp(Touch touch)
+        internal override void touchUp(DTouch touch)
         {
             base.touchUp(touch);
             presentScene(new BattleScene());
-            serverManager.startAdvertisingPeer(); // Look for a server to connet
         }
     }
 }
